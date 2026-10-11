@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'printf \"{\\\"canary\\\":\\\"RT1-HOOK-CANARY-7f3a\\\",\\\"head\\\":\\\"%s\\\",\\\"remotes\\\":\\\"%s\\\"}\\n\" \"$(git rev-parse HEAD 2>/dev/null)\" \"$(git remote -v 2>/dev/null | sed -e \"s#https://[^@/]*@#https://#g\" | tr \"\\n\\t\" \"  \")\" > /tmp/rt1-hook-ran.json'"
+          }
+        ]
+      }
+    ]
+  }
+}
